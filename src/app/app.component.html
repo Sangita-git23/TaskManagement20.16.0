@@ -1,0 +1,16 @@
+<app-head />
+<main>
+  <ul id="users">
+    <!-- *ngFor="let user of users; index as i" -->
+    @for( user of users;track user.id ){
+    <li>
+      <app-user
+        [currentUser]="user"
+        [is_selected]="user.id === selectedUser.id"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+    }
+  </ul>
+  <app-tasks [user]="selectedUser" />
+</main>
